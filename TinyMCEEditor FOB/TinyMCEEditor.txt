@@ -1,0 +1,812 @@
+OBJECT Table 90000 TinyMCEEditor Settings
+{
+  OBJECT-PROPERTIES
+  {
+    Date=27/10/20;
+    Time=12:00:00 pm;
+    Modified=Yes;
+    Version List=TinyMCE Editor;
+  }
+  PROPERTIES
+  {
+    OnDelete=VAR
+               thisid@1000 : Integer;
+             BEGIN
+             END;
+
+    CaptionML=ENU=TinyMCEEditor Settings;
+  }
+  FIELDS
+  {
+    { 1   ;   ;Key                 ;Text1         ;DataClassification=ToBeClassified;
+                                                   CaptionML=ENU=Key }
+    { 10  ;   ;Enable Online Script;Boolean       ;OnValidate=BEGIN
+                                                                VALIDATE("Free License","Enable Online Script");
+                                                              END;
+
+                                                   DataClassification=ToBeClassified;
+                                                   CaptionML=ENU=Enable Online Script }
+    { 11  ;   ;Online Script Url   ;Text150       ;ExtendedDatatype=URL;
+                                                   DataClassification=ToBeClassified;
+                                                   CaptionML=ENU=Online Script Url }
+    { 12  ;   ;Free License        ;Boolean       ;InitValue=Yes;
+                                                   OnValidate=BEGIN
+                                                                "Enable Premium Plugin" := FALSE;
+                                                              END;
+
+                                                   DataClassification=ToBeClassified;
+                                                   CaptionML=ENU=Free License }
+    { 13  ;   ;Enable Premium Plugin;Boolean      ;OnValidate=BEGIN
+                                                                "Free License" := NOT "Enable Premium Plugin";
+                                                              END;
+
+                                                   DataClassification=ToBeClassified;
+                                                   CaptionML=ENU=Enable Premium Plugin }
+    { 20  ;   ;Content Block       ;Option        ;DataClassification=ToBeClassified;
+                                                   CaptionML=ENU=Content Block;
+                                                   OptionCaptionML=ENU=DIV,P,PRE;
+                                                   OptionString=DIV,P,PRE }
+    { 21  ;   ;Content Type Fix    ;Boolean       ;DataClassification=ToBeClassified;
+                                                   CaptionML=ENU=Content Type Fix }
+    { 22  ;   ;Content Only        ;Boolean       ;DataClassification=ToBeClassified;
+                                                   CaptionML=ENU=Content Only }
+    { 23  ;   ;Skin Name           ;Text30        ;DataClassification=ToBeClassified;
+                                                   CaptionML=ENU=Skin Name }
+    { 25  ;   ;Icon Size           ;Text30        ;DataClassification=ToBeClassified;
+                                                   CaptionML=ENU=Icon Size }
+    { 27  ;   ;Css Name            ;Text30        ;DataClassification=ToBeClassified;
+                                                   CaptionML=ENU=Css Name }
+    { 29  ;   ;Css Cores           ;Boolean       ;DataClassification=ToBeClassified;
+                                                   CaptionML=ENU=Css Cores }
+    { 30  ;   ;Content Style       ;Text250       ;DataClassification=ToBeClassified;
+                                                   CaptionML=ENU=Content Style }
+    { 40  ;   ;Font Name           ;Text250       ;DataClassification=ToBeClassified;
+                                                   CaptionML=ENU=Font Name }
+    { 41  ;   ;Font Size           ;Text250       ;DataClassification=ToBeClassified;
+                                                   CaptionML=ENU=Font Size }
+    { 42  ;   ;Language            ;Text10        ;DataClassification=ToBeClassified;
+                                                   CaptionML=ENU=Language }
+    { 43  ;   ;Directionality      ;Text5         ;DataClassification=ToBeClassified;
+                                                   CaptionML=ENU=Directionality }
+    { 50  ;   ;View Mode           ;Boolean       ;DataClassification=ToBeClassified;
+                                                   CaptionML=ENU=View Mode }
+    { 51  ;   ;Show Menu           ;Boolean       ;DataClassification=ToBeClassified;
+                                                   CaptionML=ENU=Show Menu }
+    { 52  ;   ;Hide Toolbar        ;Boolean       ;DataClassification=ToBeClassified;
+                                                   CaptionML=ENU=Hide Toolbar }
+    { 53  ;   ;Hide Brand          ;Boolean       ;DataClassification=ToBeClassified;
+                                                   CaptionML=ENU=Hide Brand }
+    { 54  ;   ;Auto Save           ;Boolean       ;OnValidate=BEGIN
+                                                                "Auto Save Interval" := 0;
+                                                                "Auto Save Confirm" := FALSE;
+
+                                                                IF "Auto Save" THEN BEGIN
+                                                                  "Auto Save Interval" := 60;
+                                                                  "Auto Save Confirm" := TRUE;
+
+                                                                  "Enable Content Event On" := FALSE;
+                                                                  "On Input" := FALSE;
+                                                                  "On Keyup" := FALSE;
+                                                                  "On Change":= FALSE;
+                                                                  "On NodeChange" := FALSE;
+                                                                END;
+                                                              END;
+
+                                                   DataClassification=ToBeClassified;
+                                                   CaptionML=ENU=Auto Save }
+    { 55  ;   ;Auto Save Interval  ;Integer       ;DataClassification=ToBeClassified;
+                                                   CaptionML=ENU=Auto Save Interval (sec) }
+    { 56  ;   ;Auto Save Confirm   ;Boolean       ;DataClassification=ToBeClassified;
+                                                   CaptionML=ENU=Auto Save Confirm }
+    { 57  ;   ;Enable Content Event On;Boolean    ;OnValidate=BEGIN
+                                                                "On Input" := FALSE;
+                                                                "On Keyup" := FALSE;
+                                                                "On Change":= FALSE;
+                                                                "On NodeChange" := FALSE;
+
+                                                                IF "Enable Content Event On" THEN BEGIN
+                                                                  "Auto Save" := FALSE;
+                                                                  "Auto Save Interval" := 0;
+                                                                  "Auto Save Confirm" := FALSE;
+                                                                END;
+                                                              END;
+
+                                                   DataClassification=ToBeClassified;
+                                                   CaptionML=ENU=Enable Content Event On }
+    { 58  ;   ;On Input            ;Boolean       ;DataClassification=ToBeClassified;
+                                                   CaptionML=ENU=On Input }
+    { 59  ;   ;On Keyup            ;Boolean       ;DataClassification=ToBeClassified;
+                                                   CaptionML=ENU=On Keyup }
+    { 60  ;   ;On Change           ;Boolean       ;DataClassification=ToBeClassified;
+                                                   CaptionML=ENU=On Change }
+    { 61  ;   ;On NodeChange       ;Boolean       ;DataClassification=ToBeClassified;
+                                                   CaptionML=ENU=On NodeChange }
+    { 62  ;   ;Html Schema         ;Text10        ;InitValue=html4;
+                                                   OnValidate=BEGIN
+                                                                "Html Schema" := LOWERCASE("Html Schema");
+                                                              END;
+
+                                                   DataClassification=ToBeClassified;
+                                                   CaptionML=ENU=Html Schema }
+    { 70  ;   ;Token Provider      ;Text100       ;DataClassification=ToBeClassified;
+                                                   CaptionML=ENU=Token Provider }
+    { 71  ;   ;Dropbox App Key     ;Text100       ;DataClassification=ToBeClassified;
+                                                   CaptionML=ENU=Dropbox App Key }
+    { 72  ;   ;Google Drive Key    ;Text100       ;DataClassification=ToBeClassified;
+                                                   CaptionML=ENU=Google Drive Key }
+    { 73  ;   ;Google Drive ClientId;Text100      ;DataClassification=ToBeClassified;
+                                                   CaptionML=ENU=Google Drive ClientId }
+  }
+  KEYS
+  {
+    {    ;Key                                     ;Clustered=Yes }
+  }
+  FIELDGROUPS
+  {
+  }
+  CODE
+  {
+    VAR
+      TxtSkinName@1004 : TextConst 'ENU=tinymceeditor-blue';
+      TxtContentCss@1003 : TextConst 'ENU=default';
+      TxtLanguage@1002 : TextConst 'ENU=en';
+      TxtLanguageDir@1001 : TextConst 'ENU=ltr';
+
+    LOCAL PROCEDURE InitRecordsLoc@1();
+    BEGIN
+      RESET;
+      IF NOT GET THEN BEGIN
+        INIT;
+        "Css Name" := TxtContentCss;
+        Language := TxtLanguage;
+        Directionality := TxtLanguageDir;
+        "Content Block" := "Content Block"::"DIV";
+        INSERT;
+      END;
+    END;
+
+    PROCEDURE InitRecords@2();
+    BEGIN
+      InitRecordsLoc;
+    END;
+
+    PROCEDURE GetSampleHtml@30() ReturnValue : Text;
+    BEGIN
+      ReturnValue :=
+      '<html>' +
+      '<head><title>This is a title</title></head>' +
+      '<body style="font-family: ''Arial'', sans-serif; font-size:12pt">' +
+      '<p style="text-align: center; font-size: 15px;">' +
+      ' <img title="TinyMCE Logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcToppr2AtGlktji8wDLp_ECP-yOtgong87xWQ&usqp=CAU" alt="TinyMCE Logo" width="110" height="97" />' +
+      '</p>' +
+      '<h2 style="text-align: center;">Welcome to the TinyMCE Cloud demo!</h2>' +
+      '<h5 style="text-align: center;">Note, this includes some "enterprise/premium" features.<br>Visit the <a href="https://www.tiny.cloud/pricing">pricing page</a> to learn more about our premium plugins.</h5>' +
+      '<p>Please try out the features provided in this full featured example.</p>' +
+      '<h2>Got questions or need help?</h2>' +
+      '<ul>' +
+      ' <li>Our <a class="mceNonEditable" href="//www.tiny.cloud/docs/">documentation</a> is a great resource for learning how to configure TinyMCE.</li>' +
+      ' <li>Have a specific question? Try the <a href="https://stackoverflow.com/questions/tagged/tinymce" target="_blank" rel="noopener"><code>tinymce</code> tag at Stack Overflow</a>.</li>' +
+      ' <li>We also offer enterprise grade support as part of <a href="https://www.tiny.cloud/pricing">TinyMCE premium subscriptions</a>.</li>' +
+      '</ul>' +
+      '<h2>A simple table to play with</h2>' +
+      '<table style="border-collapse: collapse; width: 100%;" border="1">' +
+      ' <thead>' +
+      '   <tr>' +
+      '     <th>Product</th>' +
+      '     <th>Cost</th>' +
+      '     <th>Really?</th>' +
+      '   </tr>' +
+      ' </thead>' +
+      ' <tbody>' +
+      '   <tr>' +
+      '     <td>TinyMCE Cloud</td>' +
+      '     <td>Get started for free</td>' +
+      '     <td>YES!</td>' +
+      '   </tr>' +
+      '   <tr>' +
+      '     <td>Plupload</td>' +
+      '     <td>Free</td>' +
+      '     <td>YES!</td>' +
+      '   </tr>' +
+      ' </tbody>' +
+      '</table>' +
+      '<h2>Found a bug?</h2>' +
+      '<p>If you think you have found a bug please create an issue on the <a href="https://github.com/tinymce/tinymce/issues">GitHub repo</a> to report it to the developers.</p>' +
+      '<h2>Finally ...</h2>' +
+      '<p>Don''t forget to check out our other product <a href="http://www.plupload.com" target="_blank">Plupload</a>, your ultimate upload solution featuring HTML5 upload support.</p>' +
+      '<p>Thanks for supporting TinyMCE! We hope it helps you and your users create great content.<br>All the best from the TinyMCE team.</p>' +
+      '</body>' +
+      '</html>'
+    END;
+
+    BEGIN
+    END.
+  }
+}
+
+OBJECT MenuSuite 1080 Dept - Partner
+{
+  OBJECT-PROPERTIES
+  {
+    Date=27/10/20;
+    Time=12:00:00 pm;
+    Modified=Yes;
+    Version List=TinyMCE Editor;
+  }
+  PROPERTIES
+  {
+  }
+  MENUNODES
+  {
+    {                ;[{159E77E4-0021-4367-95C6-68FA32DB9FB4}] ;NextNodeID=[{BF800C60-E030-4889-BE36-EEE707EB966C}] }
+    { MenuItem       ;[{BF800C60-E030-4889-BE36-EEE707EB966C}] ;Name=Data Classification Worksheet;
+                                                                AccessByPermission=TableData 2000000159=R;
+                                                                CaptionML=ENU=Data Classification Worksheet;
+                                                                RunObjectType=Page;
+                                                                RunObjectID=1751;
+                                                                Visible=Yes;
+                                                                DepartmentCategory=Administration }
+    {                ;[{19A352FE-D90D-424E-B85F-CF3B8E98CF0E}] ;NextNodeID=[{9EF72A78-7252-4BA3-BCC0-0E0D5C80E4DB}] }
+    { Menu           ;[{9EF72A78-7252-4BA3-BCC0-0E0D5C80E4DB}] ;Name=TinyMCEEditor;
+                                                                CaptionML=ENU=TinyMCEEditor;
+                                                                MemberOfMenu=[{9EF72A78-7252-4BA3-BCC0-0E0D5C80E4DB}];
+                                                                ParentNodeID=[{00000000-0000-0000-0000-000000000000}];
+                                                                Image=0;
+                                                                IsShortcut=No;
+                                                                Visible=Yes;
+                                                                Enabled=Yes;
+                                                                NextNodeID=[{00000000-0000-0000-0000-000000000000}];
+                                                                FirstChild=[{431DE722-4E66-4C6F-9E63-9B7E109D4D60}] }
+    { MenuItem       ;[{431DE722-4E66-4C6F-9E63-9B7E109D4D60}] ;Name=TinyMCEEditor Settings;
+                                                                CaptionML=ENU=TinyMCEEditor Settings;
+                                                                MemberOfMenu=[{9EF72A78-7252-4BA3-BCC0-0E0D5C80E4DB}];
+                                                                RunObjectType=Page;
+                                                                RunObjectID=90000;
+                                                                ParentNodeID=[{9EF72A78-7252-4BA3-BCC0-0E0D5C80E4DB}];
+                                                                Visible=Yes;
+                                                                NextNodeID=[{00000000-0000-0000-0000-000000000000}];
+                                                                DepartmentCategory=Administration }
+  }
+}
+OBJECT Page 90000 TinyMCEEditor Settings
+{
+  OBJECT-PROPERTIES
+  {
+    Date=27/10/20;
+    Time=12:00:00 pm;
+    Modified=Yes;
+    Version List=TinyMCE Editor;
+  }
+  PROPERTIES
+  {
+    CaptionML=ENU=TinyMCEEditor Settings;
+    InsertAllowed=No;
+    DeleteAllowed=No;
+    SourceTable=Table90000;
+    PageType=Card;
+    OnInit=BEGIN
+             InitRecords;
+           END;
+
+    OnAfterGetRecord=BEGIN
+                       OnAfterGetRecordLoc;
+                     END;
+
+    ActionList=ACTIONS
+    {
+      { 30      ;    ;ActionContainer;
+                      ActionContainerType=ActionItems }
+      { 31      ;1   ;Action    ;
+                      Name=ShowDemo;
+                      CaptionML=ENU=Show Demo;
+                      RunObject=Page 90001;
+                      Promoted=Yes;
+                      Image=PreviewChecks;
+                      PromotedCategory=Process }
+    }
+  }
+  CONTROLS
+  {
+    { 1   ;0   ;Container ;
+                ContainerType=ContentArea }
+
+    { 2   ;1   ;Group     ;
+                Name=General;
+                CaptionML=ENU=General;
+                GroupType=Group }
+
+    { 3   ;2   ;Field     ;
+                SourceExpr="Enable Online Script" }
+
+    { 4   ;2   ;Field     ;
+                SourceExpr="Online Script Url" }
+
+    { 39  ;2   ;Field     ;
+                SourceExpr="Free License" }
+
+    { 5   ;2   ;Field     ;
+                SourceExpr="Enable Premium Plugin" }
+
+    { 7   ;1   ;Group     ;
+                Name=Css;
+                CaptionML=ENU=Css;
+                GroupType=Group }
+
+    { 8   ;2   ;Field     ;
+                SourceExpr="Skin Name" }
+
+    { 9   ;2   ;Field     ;
+                SourceExpr="Icon Size" }
+
+    { 10  ;2   ;Field     ;
+                SourceExpr="Css Name" }
+
+    { 11  ;2   ;Field     ;
+                SourceExpr="Css Cores" }
+
+    { 12  ;2   ;Field     ;
+                SourceExpr="Content Style" }
+
+    { 13  ;1   ;Group     ;
+                Name=FontLangauage;
+                CaptionML=ENU=Font & Langauage;
+                GroupType=Group }
+
+    { 14  ;2   ;Field     ;
+                SourceExpr="Font Name" }
+
+    { 15  ;2   ;Field     ;
+                SourceExpr="Font Size" }
+
+    { 16  ;2   ;Field     ;
+                SourceExpr=Language }
+
+    { 17  ;2   ;Field     ;
+                SourceExpr=Directionality }
+
+    { 22  ;1   ;Group     ;
+                Name=Options;
+                CaptionML=ENU=Options;
+                GroupType=Group }
+
+    { 50  ;2   ;Field     ;
+                SourceExpr="Content Type Fix" }
+
+    { 37  ;2   ;Field     ;
+                SourceExpr="Content Block" }
+
+    { 36  ;2   ;Field     ;
+                SourceExpr="Content Only" }
+
+    { 18  ;2   ;Field     ;
+                SourceExpr="View Mode" }
+
+    { 19  ;2   ;Field     ;
+                SourceExpr="Show Menu" }
+
+    { 20  ;2   ;Field     ;
+                SourceExpr="Hide Toolbar" }
+
+    { 21  ;2   ;Field     ;
+                SourceExpr="Hide Brand" }
+
+    { 23  ;1   ;Group     ;
+                Name=Data Capture;
+                GroupType=Group }
+
+    { 24  ;2   ;Field     ;
+                SourceExpr="Auto Save";
+                OnValidate=BEGIN
+                             EnableAutoSave := "Auto Save";
+                             IF EnableAutoSave THEN
+                               EnableEvent := FALSE;
+                           END;
+                            }
+
+    { 46  ;2   ;Group     ;
+                Enabled=EnableAutoSave;
+                GroupType=Group }
+
+    { 25  ;3   ;Field     ;
+                SourceExpr="Auto Save Interval" }
+
+    { 26  ;3   ;Field     ;
+                SourceExpr="Auto Save Confirm" }
+
+    { 6   ;3   ;Field      }
+
+    { 38  ;3   ;Field      }
+
+    { 27  ;2   ;Field     ;
+                SourceExpr="Enable Content Event On";
+                OnValidate=BEGIN
+                             EnableEvent := "Enable Content Event On";
+                             IF EnableEvent THEN
+                               EnableAutoSave := FALSE;
+                           END;
+                            }
+
+    { 47  ;2   ;Group     ;
+                Enabled=EnableEvent;
+                GroupType=Group }
+
+    { 28  ;3   ;Field     ;
+                SourceExpr="On Input" }
+
+    { 29  ;3   ;Field     ;
+                SourceExpr="On Keyup" }
+
+    { 32  ;3   ;Field     ;
+                SourceExpr="On Change" }
+
+    { 33  ;3   ;Field     ;
+                SourceExpr="On NodeChange" }
+
+    { 34  ;1   ;Group     ;
+                Name=Html Content;
+                GroupType=Group }
+
+    { 35  ;2   ;Field     ;
+                SourceExpr="Html Schema" }
+
+    { 40  ;1   ;Group     ;
+                Name=Drive;
+                CaptionML=ENU=Drive;
+                GroupType=Group }
+
+    { 41  ;2   ;Field     ;
+                SourceExpr="Token Provider" }
+
+    { 42  ;2   ;Field     ;
+                SourceExpr="Dropbox App Key" }
+
+    { 43  ;2   ;Field     ;
+                SourceExpr="Google Drive Key" }
+
+    { 44  ;2   ;Field     ;
+                SourceExpr="Google Drive ClientId" }
+
+  }
+  CODE
+  {
+    VAR
+      EnableAutoSave@1000 : Boolean INDATASET;
+      EnableEvent@1001 : Boolean INDATASET;
+
+    LOCAL PROCEDURE OnAfterGetRecordLoc@1();
+    BEGIN
+      EnableAutoSave := "Auto Save";
+      EnableEvent := "Enable Content Event On";
+    END;
+
+    BEGIN
+    END.
+  }
+}
+
+OBJECT Page 90001 TinyMCEEditor Demo
+{
+  OBJECT-PROPERTIES
+  {
+    Date=27/10/20;
+    Time=12:00:00 pm;
+    Modified=Yes;
+    Version List=TinyMCE Editor;
+  }
+  PROPERTIES
+  {
+    CaptionML=ENU=TinyMCEEditor;
+    PageType=StandardDialog;
+    OnOpenPage=BEGIN
+                 EditableOn := TRUE;
+                 IsTextFormat := FALSE;
+                 ChangeType := ChangeType::Html;
+               END;
+
+    OnAfterGetRecord=BEGIN
+                       OnAfterGetRecordLoc;
+                     END;
+
+    OnQueryClosePage=BEGIN
+                       IF IsControlAddInReady AND IsDocumentReady THEN
+                         CurrPage.TinyMCEEditor.SetDispose;
+                     END;
+
+    OnAfterGetCurrRecord=BEGIN
+                           OnAfterGetCurrRecordLoc;
+                         END;
+
+    ActionList=ACTIONS
+    {
+      { 2       ;    ;ActionContainer;
+                      ActionContainerType=ActionItems }
+      { 3       ;1   ;Action    ;
+                      Name=ShowVersion;
+                      CaptionML=ENU=Version;
+                      Promoted=Yes;
+                      PromotedIsBig=Yes;
+                      Image=ViewDescription;
+                      PromotedCategory=Process }
+    }
+  }
+  CONTROLS
+  {
+    { 1   ;0   ;Container ;
+                ContainerType=ContentArea }
+
+    { 12  ;1   ;Group     ;
+                CaptionML=ENU=General;
+                GroupType=Group }
+
+    { 15  ;2   ;Group     ;
+                GroupType=Group }
+
+    { 5   ;3   ;Field     ;
+                Name=EditableOn;
+                CaptionML=ENU=Editable;
+                SourceExpr=EditableOn;
+                OnValidate=BEGIN
+                             IF (IsControlAddInReady AND IsDocumentReady) THEN
+                               CurrPage.TinyMCEEditor.SetEditable(EditableOn);
+                           END;
+                            }
+
+    { 4   ;3   ;Field     ;
+                Name=EventOn;
+                CaptionML=ENU=Event On;
+                SourceExpr=EventOn;
+                Editable=FALSE }
+
+    { 6   ;3   ;Field     ;
+                Name=ChangeType;
+                CaptionML=ENU=Change Type;
+                SourceExpr=ChangeType;
+                OnValidate=BEGIN
+                             IsTextFormat := ChangeType = ChangeType::Text;
+                             IF IsControlAddInReady AND IsDocumentReady THEN
+                               CurrPage.TinyMCEEditor.SetContentType(IsTextFormat,ContentTypeIsFix);
+                           END;
+                            }
+
+    { 16  ;2   ;Group     ;
+                GroupType=Group }
+
+    { 18  ;3   ;Field     ;
+                DrillDown=Yes;
+                SourceExpr=TxtGetAvaSkin;
+                Editable=FALSE;
+                OnDrillDown=BEGIN
+                              IF IsControlAddInReady AND IsDocumentReady THEN
+                                CurrPage.TinyMCEEditor.GetAvaiableSkin;
+                            END;
+
+                ShowCaption=No }
+
+    { 7   ;3   ;Field     ;
+                DrillDown=Yes;
+                SourceExpr=TxtGetFont;
+                Editable=FALSE;
+                OnDrillDown=BEGIN
+                              IF IsControlAddInReady AND IsDocumentReady THEN
+                                CurrPage.TinyMCEEditor.GetDefaultFonts;
+                            END;
+
+                ShowCaption=No }
+
+    { 8   ;3   ;Field     ;
+                DrillDown=Yes;
+                SourceExpr=TxtGetFontSize;
+                Editable=FALSE;
+                OnDrillDown=BEGIN
+                              IF IsControlAddInReady AND IsDocumentReady THEN
+                                CurrPage.TinyMCEEditor.GetDefaultFontSize;
+                            END;
+
+                ShowCaption=No }
+
+    { 10  ;3   ;Field     ;
+                DrillDown=Yes;
+                SourceExpr=TxtGetVersion;
+                Editable=FALSE;
+                OnDrillDown=BEGIN
+                              IF IsControlAddInReady AND IsDocumentReady THEN
+                                CurrPage.TinyMCEEditor.GetVersion;
+                            END;
+
+                ShowCaption=No }
+
+    { 13  ;3   ;Field     ;
+                DrillDown=Yes;
+                SourceExpr=TxtGetContentAs;
+                Editable=FALSE;
+                OnDrillDown=VAR
+                              intSelected@1000 : Integer;
+                            BEGIN
+                              intSelected := STRMENU(TxtContentAs,1,TxtContentAsChoose);
+                              IF intSelected = 0 THEN
+                                EXIT;
+                              IsGetContentAs := TRUE;
+                              IF IsControlAddInReady AND IsDocumentReady THEN BEGIN
+                                IF intSelected = 1 THEN
+                                  CurrPage.TinyMCEEditor.GetContentAs(TRUE)
+                                ELSE
+                                  CurrPage.TinyMCEEditor.GetContentAs(FALSE);
+                              END;
+                            END;
+
+                ShowCaption=No }
+
+    { 11  ;3   ;Field     ;
+                DrillDown=Yes;
+                SourceExpr=TxtGetContent;
+                Editable=FALSE;
+                OnDrillDown=BEGIN
+                              IF IsControlAddInReady AND IsDocumentReady THEN
+                                CurrPage.TinyMCEEditor.GetContent;
+                            END;
+
+                ShowCaption=No }
+
+    { 14  ;1   ;Group     ;
+                CaptionML=ENU=TinyMCEEditor;
+                GroupType=Group }
+
+    { 9   ;2   ;Field     ;
+                Name=TinyMCEEditor;
+                ControlAddIn=[Microsoft.Dynamics.Nav.Client.TinyMCEEditor;PublicKeyToken=1bd514f27c8bf57b] }
+
+  }
+  CODE
+  {
+    VAR
+      IsControlAddInReady@1000 : Boolean;
+      IsDocumentReady@1010 : Boolean;
+      ContentTypeIsFix@1004 : Boolean;
+      EventOn@1001 : Text[10];
+      EditableOn@1002 : Boolean;
+      ChangeType@1005 : 'Text,Html';
+      HtmlText@1014 : Text;
+      IsTextFormat@1003 : Boolean;
+      TxtGetFont@1006 : TextConst 'ENU=Fonts';
+      TxtGetFontSize@1007 : TextConst 'ENU=Font Size';
+      TxtGetAvaSkin@1015 : TextConst 'ENU=Avaiable Skin';
+      TxtGetVersion@1009 : TextConst 'ENU=Version';
+      TxtGetContent@1008 : TextConst 'ENU=Current Content';
+      TxtGetContentAs@1011 : TextConst 'ENU=Content As';
+      TxtContentAs@1012 : TextConst 'ENU=Text,Html';
+      TxtContentAsChoose@1013 : TextConst 'ENU=Choose one of the following options:';
+      IsGetContentAs@1016 : Boolean;
+
+    LOCAL PROCEDURE OnAfterGetRecordLoc@5();
+    BEGIN
+      // Do Something
+      IF (IsControlAddInReady AND IsDocumentReady) THEN BEGIN
+        {=== Change the layout for real world ===}
+        {===
+        IF xRec."Plain Text" <> "Plain Text" THEN
+          CurrPage.TinyMCEEditor.SetContentType("Plain Text",ContentTypeIsFixLoc)
+        ELSE
+        ===}
+        CurrPage.TinyMCEEditor.SetContent(HtmlText);
+      END;
+    END;
+
+    LOCAL PROCEDURE OnAfterGetCurrRecordLoc@4();
+    BEGIN
+      IF (IsControlAddInReady AND IsDocumentReady) THEN
+        CurrPage.TinyMCEEditor.SetEditable(CurrPage.EDITABLE);
+    END;
+
+    LOCAL PROCEDURE SetDialogSettingsLoc@10();
+    VAR
+      TinyMCEEditorSettings@1001 : Record 90000;
+    BEGIN
+      WITH TinyMCEEditorSettings DO BEGIN
+        GET;
+
+        IF "Enable Online Script" THEN
+          CurrPage.TinyMCEEditor.SetOnlineScriptUrl("Online Script Url","Free License");
+
+        IF "Enable Premium Plugin" THEN
+          CurrPage.TinyMCEEditor.SetEnablePremiumPlugin;
+
+        CurrPage.TinyMCEEditor.SetContentStyle("Content Style");
+        CurrPage.TinyMCEEditor.SetContentBlock(FORMAT("Content Block"));
+        ContentTypeIsFix := "Content Type Fix";
+
+        IF "Content Only" THEN
+          CurrPage.TinyMCEEditor.SetContentOnly;
+
+        CurrPage.TinyMCEEditor.SetSkinIconAndCss("Skin Name","Icon Size","Css Name","Css Cores");
+        CurrPage.TinyMCEEditor.SetFonts("Font Name");
+        CurrPage.TinyMCEEditor.SetFontSize("Font Size");
+        CurrPage.TinyMCEEditor.SetLanguage(Language,Directionality);
+
+        IF "View Mode" THEN
+          CurrPage.TinyMCEEditor.SetViewMode;
+
+        IF "Show Menu" THEN
+          CurrPage.TinyMCEEditor.SetShowMenu;
+
+        IF "Hide Toolbar" THEN
+          CurrPage.TinyMCEEditor.SetHideToolbar;
+
+        IF "Hide Brand" THEN
+          CurrPage.TinyMCEEditor.SetHideBrand;
+
+        IF "Auto Save" THEN
+          CurrPage.TinyMCEEditor.SetAutoSave("Auto Save Interval","Auto Save Confirm");
+
+        IF ("On Input" OR "On Keyup" OR "On Change" OR "On NodeChange") THEN
+          CurrPage.TinyMCEEditor.SetEnableContentEventOn("On Input","On Keyup","On Change","On NodeChange");
+
+        CurrPage.TinyMCEEditor.SetHtmlSchema("Html Schema");
+        CurrPage.TinyMCEEditor.SetTokenProvider("Token Provider");
+        CurrPage.TinyMCEEditor.SetDropboxAppKey("Dropbox App Key");
+        CurrPage.TinyMCEEditor.SetGoogleDriveKey("Google Drive Key");
+        CurrPage.TinyMCEEditor.SetGoogleDriveClientId("Google Drive ClientId");
+
+        HtmlText := GetSampleHtml;
+      END;
+    END;
+
+    EVENT TinyMCEEditor@-9::ContentText@23(Contents@1001 : Text;IsText@1000 : Boolean);
+    BEGIN
+      // Do Something
+      {===
+      IF (IsControlAddInReady AND IsDocumentReady) THEN BEGIN
+
+      END;
+      ===}
+      IF IsText AND NOT IsGetContentAs THEN
+        ChangeType := ChangeType::Text
+      ELSE
+        ChangeType := ChangeType::Html;
+
+      IsGetContentAs := FALSE;
+      MESSAGE('Is Text Content Type? %1\\%2',IsText,Contents);
+    END;
+
+    EVENT TinyMCEEditor@-9::ContentTypeHasChanged@24();
+    BEGIN
+      IF (IsControlAddInReady AND IsDocumentReady) THEN
+        CurrPage.TinyMCEEditor.GetContent;
+    END;
+
+    EVENT TinyMCEEditor@-9::ContentHasChanged@25(EventName@1000 : Text);
+    BEGIN
+      IF (IsControlAddInReady AND IsDocumentReady) THEN
+        CurrPage.TinyMCEEditor.GetContent;
+
+      EventOn := EventName;
+    END;
+
+    EVENT TinyMCEEditor@-9::ContentHasSaved@26();
+    BEGIN
+      IF (IsControlAddInReady AND IsDocumentReady) THEN
+        IF CONFIRM('Content has saved.\Do you want to update the data?') THEN
+          CurrPage.TinyMCEEditor.GetContent;
+    END;
+
+    EVENT TinyMCEEditor@-9::ControlAddInReady@27(IsReady@1000 : Boolean);
+    BEGIN
+      IsControlAddInReady := IsReady;
+      IF (NOT IsControlAddInReady) THEN
+        EXIT;
+
+      SetDialogSettingsLoc;
+      CurrPage.TinyMCEEditor.InitContent(IsTextFormat,ContentTypeIsFix);
+    END;
+
+    EVENT TinyMCEEditor@-9::DocumentReady@28(IsReady@1000 : Boolean);
+    BEGIN
+      IsDocumentReady := IsReady;
+      IF (IsControlAddInReady AND IsDocumentReady) AND NOT IsTextFormat THEN
+        CurrPage.TinyMCEEditor.SetContent(HtmlText);
+    END;
+
+    BEGIN
+    END.
+  }
+}
+

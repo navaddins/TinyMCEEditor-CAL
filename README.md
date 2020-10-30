@@ -115,15 +115,11 @@ No.
 
 #### In order to run with latest TinyMCE version (offline), can i build the control addin by myself?
 
-Yes, open the powershell with Administrator and then run the "Create-AL-Package.ps1". It will auto download the latest version of TinyMCE package from TinyMCE web site and make the **"TinyMCEEditor_CAI.al"** file for you. **Please read the documentation from "Create-AL-Package.ps1" before build yourself.**
-
-#### Can i move the "TinyMCEEditor" folder from "TinyMCEEditor AL\App\08_ControllAddin\"?
-
-Yes, as long as "TinyMCEEditor" is under AL Project Folder.
+Yes, open the powershell with Administrator and then run the "Create-Resource-Package.ps1". It will auto download the latest version of TinyMCE package from TinyMCE web site and make the **"Resource_TinyMCE_Ver_x.x.x.zip"** file is under **"TinyMCEEditor Package"** folder. **Please read the documentation from "Create-Resource-Package.ps1" before build yourself.**
 
 #### Can i create my own skin and add to package?
 
-Yes, you can make your own skin from [TinyMCE Skin tool](http://skin.tiny.cloud/t5/) and download the skin from TinyMCE Skin tool and save at "TinyMCEEditor AL\App\08_ControllAddin\TinyMCEEditor\skins" folder.
+Yes, you can make your own skin from [TinyMCE Skin tool](http://skin.tiny.cloud/t5/) and download the skin from TinyMCE Skin tool and save at "TinyMCEEditor CAL\TinyMCEEditor JS\skins" folder. And then rebuild the package again.
 
 #### How can i set my own skin when i run from AL?
 

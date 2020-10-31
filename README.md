@@ -188,7 +188,7 @@ Yes.
 
 ```al
 //Set True or False between Html and Text
-CurrPage.TinyMCEEditor.SetContent(True/False);
+CurrPage.TinyMCEEditor.SetContentType(True/False,True/False);
 ```
 
 #### Can i set View mode or Readonly mode?

@@ -9,6 +9,8 @@ In order to work with Navision (2016, 2017, 2018 and BC), TinymceEditor is using
 
 ![Image_1](https://github.com/navaddins/TinyMCEEditor-CAL/blob/main/Images/TextMode.png)
 
+![Image_2](https://github.com/navaddins/TinyMCEEditor-CAL/blob/main/Images/HtmlMode_WebClient.png)
+
 ## FAQ
 
 #### Does it work with NAV 2016, 2017 and 2018 (RTC and Web Client)?
@@ -31,7 +33,7 @@ Yes, you can choose either offline or online to get latest tinymce js for **Web 
 
 #### Why RTC only working with offline mode?
 
-Some of functions are do not work online js. eg, language, skin. This is a reason to set default offline js for RTC.
+Some of functions are do not work online js. eg, language, skin or domain validation. This is a reason to set default offline js for RTC.
 
 #### How can i change for working with online js instead of offline js?
 

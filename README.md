@@ -230,9 +230,17 @@ Yes, you can to use below property for auto save.
 CurrPage.TinyMCEEditor.SetAutoSave(Second,ConfirmY/N);
 ```
 
+#### What is different between GetContent() and GetContentAs(pIsText: Boolean)?
+
+You allow user to switch between Html or Text mode at editor. You need to use **GetContent()** to get current editor content.
+
+You set Editor mode is html only but you want to get html as text. In this case, you need to use **GetContentAs(True)**
+
+Editor mode is text only but you want to get text as html. In this case, you need to use **GetContentAs(False)**
+
 #### Should i call SetDispose() method?
 
-Yes, you should call SetDispose() method when you close the page. It will be released memory.
+Yes, you should call **SetDispose()** method when you close the page. It will be **released memory**.
 
 ```al
 CurrPage.TinyMCEEditor.SetDispose();

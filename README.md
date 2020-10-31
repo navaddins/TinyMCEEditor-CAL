@@ -329,7 +329,7 @@ TINYMCEEDITOR CAL
 ## Avaiable Properties, Methods and Events
 
 ```al
-    **Properties**
+    **Properties and Methods**
 
     SetSkinIconAndCss(pSkinName: Text; pIconSize: Text; pCssName: Text; pCssCores: Boolean);
     SetFonts(pFonts: Text);
@@ -349,19 +349,19 @@ TINYMCEEDITOR CAL
     SetEnableContentEventOn(pInput: Boolean; pKeyup: Boolean; pChange: Boolean; pNodeChange: Boolean);
     SetContentType(pIsText: Boolean; pIsFixContentType: Boolean);
     SetContentStyle(pStyle: Text);
-	
-    **Methods**
     SetHideBrand();
     SetHideToolbar();
-    SetDispose();
     SetViewMode();
     SetShowMenu();
     SetContentOnly();
+    SetEnablePremiumPlugin();    
+    SetDispose();
+    
     GetVersion();
-    GetAvaiableSkin();
-    SetEnablePremiumPlugin();
+    GetAvaiableSkin();    
     GetDefaultFonts();
     GetDefaultFontSize();    
+
     GetContent();
     GetContentAs(pIsText: Boolean);
 

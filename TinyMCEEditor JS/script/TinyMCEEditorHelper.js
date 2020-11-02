@@ -942,7 +942,7 @@ var TinyMCEEditorHelper = {
                             ],
                             toolbar: TinyMCEEditorHelper.GetHideToolbar() ? !TinyMCEEditorHelper.GetHideToolbar() : 'btnTextFormat | newdocument save preview print | wordcount  | undo redo | selectall cut copy paste searchreplace |' +
                                 'bold italic underline strikethrough subscript superscript hr pagebreak| casechange fontselect fontsizeselect formatselect|' +
-                                'forecolor backcolor permanentpen formatpainter removeformat | a11ycheck ltr rtl | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist checklist |' +
+                                'forecolor backcolor permanentpen formatpainter removeformat | a11ycheck ltr rtl | alignleft aligncenter alignright alignjustify lineheight | outdent indent |  numlist bullist checklist |' +
                                 'charmap emoticons | insertfile image media pageembed link template | anchor blockquote codesample code visualchars | table',
                             toolbar_mode: 'sliding',
                             contextmenu: 'link imagetools table configurepermanentpen',

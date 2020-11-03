@@ -48,7 +48,7 @@ var TinyMCEEditorHelper = {
                 });
             };
         });
-    },    
+    },
     DisplaySpinner: function () {
         if (TinyMCEEditorHelper.Properties.IsDisplaySpinner)
             return;
@@ -126,7 +126,7 @@ var TinyMCEEditorHelper = {
         var currResourceUrl = currScriptUrl.substring(0, currScriptUrl.lastIndexOf("script"));
         if (currResourceUrl.slice(currResourceUrl.length - 1) != "/")
             currResourceUrl = currResourceUrl + "/"
-        return currResourceUrl;        
+        return currResourceUrl;
     },
     GetResourceBaseUrl: function () {
         return TinyMCEEditorHelper.GetProtocol() + TinyMCEEditorHelper.GetHost() + TinyMCEEditorHelper.GetResourceUrl();
@@ -785,11 +785,12 @@ var TinyMCEEditorHelper = {
                             schema: TinyMCEEditorHelper.GetHtmlSchema(),
                             autosave_ask_before_unload: false,
                             autosave_interval: TinyMCEEditorHelper.GetAutoSaveInterval(),
-                            plugins: "newdocument save preview print wordcount paste directionality searchreplace quickbars visualchars" + TinyMCEEditorHelper.GetAutoSavePlugin(),
+                            fullscreen_native: true,
+                            plugins: "newdocument save preview print wordcount paste directionality searchreplace quickbars visualchars fullscreen" + TinyMCEEditorHelper.GetAutoSavePlugin(),
                             menu: {
                                 file: {
                                     title: 'File',
-                                    items: 'mnuTextFormat | newdocument mnuSave | preview print '
+                                    items: 'mnuTextFormat | newdocument mnuSave | print '
                                 },
                                 edit: {
                                     title: 'Edit',
@@ -800,7 +801,7 @@ var TinyMCEEditorHelper = {
                                     items: 'visualchars | spellchecker | preview fullscreen'
                                 }
                             },
-                            toolbar: TinyMCEEditorHelper.GetHideToolbar() ? !TinyMCEEditorHelper.GetHideToolbar() : 'btnTextFormat | newdocument save preview print | wordcount | undo redo | selectall cut copy paste searchreplace| a11ycheck ltr rtl | visualchars | spellchecker',
+                            toolbar: TinyMCEEditorHelper.GetHideToolbar() ? !TinyMCEEditorHelper.GetHideToolbar() : 'btnTextFormat | newdocument save preview fullscreen print | wordcount | undo redo | selectall cut copy paste searchreplace| a11ycheck ltr rtl | visualchars | spellchecker',
                             quickbars_selection_toolbar: TinyMCEEditorHelper.GetHideToolbar() ? !TinyMCEEditorHelper.GetHideToolbar() : 'cut copy paste searchreplace',
                             a11y_advanced_options: true,
                             content_style: '',
@@ -903,10 +904,18 @@ var TinyMCEEditorHelper = {
                             elementpath: false,
                             relative_urls: false,
                             remove_script_host: true,
+                            fullscreen_native: true,
+                            autosave_ask_before_unload: false,
+                            autosave_interval: TinyMCEEditorHelper.GetAutoSaveInterval(),
+                            plugins: ['save print preview searchreplace autolink directionality',
+                                'visualblocks visualchars fullscreen image link media template code codesample table charmap hr pagebreak nonbreaking anchor',
+                                'toc insertdatetime advlist lists wordcount imagetools textpattern noneditable',
+                                'charmap emoticons quickbars' + TinyMCEEditorHelper.GetPremiumPlugin() + TinyMCEEditorHelper.GetAutoSavePlugin() + TinyMCEEditorHelper.GetFullPagePlugin()
+                            ],
                             menu: {
                                 file: {
                                     title: 'File',
-                                    items: 'mnuTextFormat | newdocument mnuSave | preview | print '
+                                    items: 'mnuTextFormat | newdocument mnuSave | print export'
                                 },
                                 edit: {
                                     title: 'Edit',
@@ -933,14 +942,7 @@ var TinyMCEEditorHelper = {
                                     items: 'inserttable | cell row column | tableprops deletetable'
                                 }
                             },
-                            autosave_ask_before_unload: false,
-                            autosave_interval: TinyMCEEditorHelper.GetAutoSaveInterval(),
-                            plugins: ['save print preview searchreplace autolink directionality',
-                                'visualblocks visualchars fullscreen image link media template code codesample table charmap hr pagebreak nonbreaking anchor',
-                                'toc insertdatetime advlist lists wordcount imagetools textpattern noneditable',
-                                'charmap emoticons quickbars' + TinyMCEEditorHelper.GetPremiumPlugin() + TinyMCEEditorHelper.GetAutoSavePlugin() + TinyMCEEditorHelper.GetFullPagePlugin()
-                            ],
-                            toolbar: TinyMCEEditorHelper.GetHideToolbar() ? !TinyMCEEditorHelper.GetHideToolbar() : 'btnTextFormat | newdocument save preview print | wordcount  | undo redo | selectall cut copy paste searchreplace |' +
+                            toolbar: TinyMCEEditorHelper.GetHideToolbar() ? !TinyMCEEditorHelper.GetHideToolbar() : 'btnTextFormat | newdocument save preview fullscreen print export| wordcount  | undo redo | selectall cut copy paste searchreplace |' +
                                 'bold italic underline strikethrough subscript superscript hr pagebreak| casechange fontselect fontsizeselect formatselect|' +
                                 'forecolor backcolor permanentpen formatpainter removeformat | a11ycheck ltr rtl | alignleft aligncenter alignright alignjustify lineheight | outdent indent |  numlist bullist checklist |' +
                                 'charmap emoticons | insertfile image media pageembed link template | anchor blockquote codesample code visualchars | table',
@@ -952,6 +954,7 @@ var TinyMCEEditorHelper = {
                             image_caption: true,
                             automatic_uploads: false,
                             image_advtab: true,
+                            draggable_modal: true,
                             file_picker_types: 'image',
                             schema: TinyMCEEditorHelper.GetHtmlSchema(),
                             save_onsavecallback: function () {
@@ -1071,8 +1074,8 @@ var TinyMCEEditorHelper = {
                     toolbar: false,
                     relative_urls: false,
                     remove_script_host: true,
-                    plugins: "past" + TinyMCEEditorHelper.GetFullPagePlugin(),
                     schema: TinyMCEEditorHelper.GetHtmlSchema(),
+                    plugins: "paste" + TinyMCEEditorHelper.GetFullPagePlugin(),                    
                     setup: function (ed) {
                         ed.on('init',
                             function () {
@@ -1117,7 +1120,7 @@ var TinyMCEEditorHelper = {
         AutoSaveInterval: 60,
         AutoSavePlugin: 'autosave',
         IsSelfHost: !1,
-        PremiumPlugin: 'tinydrive powerpaste casechange advcode mediaembed checklist tinymcespellchecker a11ychecker formatpainter permanentpen pageembed mentions linkchecker advtable',
+        PremiumPlugin: 'tinydrive export powerpaste casechange advcode mediaembed checklist tinymcespellchecker a11ychecker formatpainter permanentpen pageembed mentions linkchecker advtable',
         ContentStyle: '',
         Fonts: '',
         DefaultFonts: 'Andale Mono=andale mono,times; Arial=arial,helvetica,sans-serif; Arial Black=arial black,avant garde; ' +

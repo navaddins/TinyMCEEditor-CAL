@@ -300,7 +300,7 @@ var TinyMCEEditorHelper = {
                 tinymce.activeEditor.mode.set('design');
             else
                 tinymce.activeEditor.mode.set('readonly');
-            TinyMCEEditorHelper.Properties.IsEditable = e;
+            TinyMCEEditorHelper.Properties.IsEditable = pEditable;
         }
     },
     GetEditable: function () {

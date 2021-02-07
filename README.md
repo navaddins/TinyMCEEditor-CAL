@@ -383,6 +383,13 @@ TINYMCEEDITOR CAL
     ControlAddInReady(IsReady: Boolean);
     DocumentReady(IsReady: Boolean);
 ```
+## IE Settings
+
+You are facing endless loading screen when you are using Control Add-In with RTC client. You need change the setting of Internet Explorer.
+
+- Close all RTC Clients before change the setting
+- ![Image_3](https://github.com/navaddins/TinyMCEEditor-CAL/blob/main/Images/IESetting.png)
+
 
 ## TinyMCE Version Log
 
